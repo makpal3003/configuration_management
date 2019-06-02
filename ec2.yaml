@@ -1,11 +1,12 @@
 ---
-- name: create ec2 instance
+- name: Create ec2 instance
   hosts: localhost
   tasks:
-    - name: create instances
+    - name: Create instances
       ec2:
-      key_name: MyMacKey
-      instance_type: t2.medium
-      image: ami-0f2b4fc905b0bd1f1)
-      count: 3
-      vpc_subnet_id: subnet-0496906c
+        key_name: MyMacKey
+        instance_type: t2.medium
+        image: ami-0f2b4fc905b0bd1f1)
+        count: 3
+        vpc_subnet_id: subnet-0496906c
+        region: us-east-2
