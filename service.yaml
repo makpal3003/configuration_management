@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks: 
+    - name: Start specific service
+      package:
+        name: httpd
+        state: latest
+      become: yes
+      become_method: sudo  
