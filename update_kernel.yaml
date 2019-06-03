@@ -1,14 +1,13 @@
 ---
-  - hosts: localhost
+  - hosts: kernel
+    become: yes
+    become_method: sudo
     tasks:
       - name: update kernel to latest
-        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+        when: ansible_distribution == "CentOS"
         package:
           name: kernel
           state: latest
-        become: yes
-        become_method: sudo
-      - name: Restart the system
-        reboot:
-     #-name: Restart the system
-     # reboot:   
+      - name: restart the system
+        when: ansible_distribution == "CentOS"
+        reboot:   
