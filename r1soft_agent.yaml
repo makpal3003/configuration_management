@@ -33,7 +33,7 @@
           - name: Install r1soft agent
             package:
               name: serverbackup-enterprise-agent 
-              state: restarted
+              state: latest
 
           - name: Start agent
             service:
