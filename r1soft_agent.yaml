@@ -1,45 +1,80 @@
 ---
-  - name: Install r1soft agnet
+  - name: install r1soft agent
     hosts: target
     become: yes
     become_method: sudo
-    tasks:
+    tasks: 
+    # This line is for CentOS 7
       - block:
         - name: Create Repository
-          copy:
-            src: r1soft.repo
-            dest: /etc/yum.repos.d/r1soft.repo
-
-        - name: Install r1soft agent
-          package:
+          copy: 
+             src: r1soft.repo
+             dest: /etc/yum.repos.d/r1soft.repo
+        - name: Install r1soft pgent
+          package: 
             name: serverbackup-enterprise-agent 
-            state: latest
-
-        - name: Start agent
-          systemd:
+            state: latest 
+        - name: start agent
+          systemd: 
             name: sbm-agent
-            state: restarted  
-
+            state: restarted
         - name: Get key
-          shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"  
-          when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
-#this line for centos6
-        - block:
-          - name: Create Repository
-            copy:
-              src: r1soft.repo
-              dest: /etc/yum.repos.d/r1soft.repo
+          shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
-          - name: Install r1soft agent
-            package:
-              name: serverbackup-enterprise-agent 
-              state: latest
+# This line is for CentOS 6
 
-          - name: Start agent
-            service:
-              name: cdp-agent
-              state: restarted  
+      - block:
+        - name: Create Repository
+          copy: 
+             src: r1soft.repo
+             dest: /etc/yum.repos.d/r1soft.repo
+        - name: Install r1soft pgent
+          package: 
+            name: serverbackup-enterprise-agent 
+            state: latest 
+        - name: start agent
+          service: 
+            name: cdp-agent
+            state: restarted
+        - name: Get key
+          shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
 
-          - name: Get key
-            shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"  
-            when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+
+    # This line is for CentOS 8
+      - block:
+        - name: Create Repository
+          copy: 
+             src: r1soft.repo
+             dest: /etc/yum.repos.d/r1soft.repo
+        - name: Install r1soft pgent
+          package: 
+            name: serverbackup-enterprise-agent 
+            state: latest 
+        - name: start agent
+          systemd: 
+            name: sbm-agent
+            state: restarted
+        - name: Get key
+          shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
+
+# This line is for Fedora
+
+      - block:
+        - name: Create Repository
+          copy: 
+             src: r1soft.repo
+             dest: /etc/yum.repos.d/r1soft.repo
+        - name: Install r1soft pgent
+          package: 
+            name: serverbackup-enterprise-agent 
+            state: latest 
+        - name: start agent
+          service: 
+            name: cdp-agent
+            state: restarted
+        - name: Get key
+          shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "28"        
