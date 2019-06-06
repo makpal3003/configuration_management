@@ -22,7 +22,7 @@
 
         - name: Get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"  
-          when: ansible_distribution == "CentOS" and ansible_distributiob_major_version == "7"
+          when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 #this line for centos6
         - block:
           - name: Create Repository
@@ -42,4 +42,4 @@
 
           - name: Get key
             shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"  
-            when: ansible_distribution == "CentOS" and ansible_distributiob_major_version == "6"
+            when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
