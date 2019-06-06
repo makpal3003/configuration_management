@@ -10,17 +10,29 @@
           copy: 
              src: r1soft.repo
              dest: /etc/yum.repos.d/r1soft.repo
+             
         - name: Install r1soft pgent
           package: 
             name: serverbackup-enterprise-agent 
             state: latest 
+          notify: R1SOFT_INSTALLED_ON_CENTOS7
+
         - name: start agent
           systemd: 
             name: sbm-agent
             state: restarted
+
         - name: Get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+  handlers: 
+    - name: R1SOFT_INSTALLED
+      systemd:
+        name: sbm-agent
+        state: restarted
+
+
 
 # This line is for CentOS 6
 
