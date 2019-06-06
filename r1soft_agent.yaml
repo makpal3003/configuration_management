@@ -32,7 +32,10 @@
           name: sbm-agent
           state: restarted
 
-
+      - name: start agent
+          service: 
+            name: cdp-agent
+            state: restarted
 
 # This line is for CentOS 6
 
@@ -45,14 +48,13 @@
           package: 
             name: serverbackup-enterprise-agent 
             state: latest 
-        - name: start agent
-          service: 
-            name: cdp-agent
-            state: restarted
+          notify: R1SOFT_INSTALLED_ON_CENTOS6
+
         - name: Get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
 
+      
 
     # This line is for CentOS 8
       - block:
