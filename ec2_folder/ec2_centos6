@@ -1,0 +1,6 @@
+key_name:       "Tower_key"
+instance_type:  "t2.micro"
+image:          "ami-0a4e0492247630fe1"
+count:          "1"
+vpc_subnet_id:  "subnet-e79136ab"
+region:         "us-east-2"
