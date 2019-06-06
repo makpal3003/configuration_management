@@ -5,8 +5,8 @@
   become_method: sudo
   tasks: 
     - block: 
-      - name: Create a Repository
-        copy: 
+      -  name: Create a Repository
+         copy: 
             src: r1soft.repo
             dest: /etc/yum.repos.d/r1soft.repo
         
