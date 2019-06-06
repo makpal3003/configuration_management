@@ -1,0 +1,7 @@
+---
+- name: Install r1soft agent
+  become: yes
+  become_method: sudo
+  tasks: 
+    - name: Create Repository
+        
