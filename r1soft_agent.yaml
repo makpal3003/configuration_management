@@ -5,7 +5,7 @@
   become_method: sudo
   tasks: 
     - block: 
-      - name: Create Repository
+      - name: Create a Repository
         block:
           copy: 
             src: r1soft.repo
@@ -16,7 +16,7 @@
       - name: serverbackup-enterprise-agent
         state: latest
 
-      - name: start agent
+      - name: Start agent
         systemd: 
       - name: sbm-agent
         state: restarted    
