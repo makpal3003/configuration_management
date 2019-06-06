@@ -26,16 +26,6 @@
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
-    handlers: 
-      - name: R1SOFT_INSTALLED
-        systemd:
-          name: sbm-agent
-          state: restarted
-
-      - name: start agent
-          service: 
-            name: cdp-agent
-            state: restarted
 
 # This line is for CentOS 6
 
@@ -91,4 +81,20 @@
             state: restarted
         - name: Get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
-        when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "28"        
+        when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "28"
+
+        
+    handlers: 
+      - name: R1SOFT_INSTALLED_ON_CENTOS_6
+        systemd:
+          name: cdp-agent
+          state: restarted
+      - name: R1SOFT_INSTALLED_ON_CENTOS_7
+        systemd:
+          name: sbm-agent
+          state: restarted  
+          handlers: 
+      - name: R1SOFT_INSTALLED_ON_CENTOS_8
+        systemd:
+          name: sbm-agent
+          state: restarted               
