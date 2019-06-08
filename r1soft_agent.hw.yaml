@@ -19,7 +19,7 @@
 
         - name: start agent
           systemd: 
-            name: sdb-agent
+            name: cdp-agent
             state: restarted
 
         - name: Get key
