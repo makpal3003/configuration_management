@@ -40,7 +40,7 @@
             state: latest 
           notify: R1SOFT_INSTALLED_ON_CENTOS6 
 
-        - name: start agent
+        - name: start ag
           service:
             name: cdp-agent
             state: restarted
