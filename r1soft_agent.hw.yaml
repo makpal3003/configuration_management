@@ -19,7 +19,7 @@
 
         - name: start agent
           systemd: 
-            name: sbm-agent
+            name: sdb-agent
             state: restarted
 
         - name: Get key
