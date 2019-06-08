@@ -11,7 +11,7 @@
              src: r1soft.repo
              dest: /etc/yum.repos.d/r1soft.repo
 
-        - name: Install r1soft pgent
+        - name: Install r1soft agent
           package: 
             name: serverbackup-enterprise-agent 
             state: latest 
@@ -60,7 +60,7 @@
           copy: 
              src: r1soft.repo
              dest: /etc/yum.repos.d/r1soft.repo
-        - name: Install r1soft pgent
+        - name: Install r1soft agent
           package: 
             name: serverbackup-enterprise-agent 
             state: latest 
