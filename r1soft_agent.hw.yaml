@@ -27,25 +27,23 @@
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
 
-# This line for CentOS 6
-      - block: 
-        - name: Create Repository
-          copy:
-            src: r1soft.repo
-            dest: /etc/yum.repos.d/r1soft.repo
+# This line is for CentOS 6
 
+      - block:
+        - name: Create Repository
+          copy: 
+             src: r1soft.repo
+             dest: /etc/yum.repos.d/r1soft.repo
         - name: Install r1soft agent
-          package:
-            name: serverbackup-enterprise-agent
-            state: latest
-        notify: R1SOFT_INSTALLED_ON_CENTOS_6
- 
+          package: 
+            name: serverbackup-enterprise-agent 
+            state: latest 
+          notify: R1SOFT_INSTALLED_ON_CENTOS6 
         - name: Get key
           shell: "r1soft-setup --get-key http://35.227.93.8"
-        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6" 
+        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
 
-
-  handlers: 
+    handlers: 
       - name: R1SOFT_INSTALLED_ON_CENTOS_6
         systemd:
           name: cdp-agent
