@@ -5,5 +5,5 @@
     - name: Terminate instances
       ec2:
         instance_ids: "{{ID}}"
-        state: absent #stopped #started
+        state: "{{state}}" #stopped #started
         region: "{{REGION}}"
