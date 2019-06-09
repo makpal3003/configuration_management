@@ -15,7 +15,7 @@
 
 
     - block:
-      - name: Install filebeat repo on centos 7
+      - name: Install filebeat repo on centos 7p
         package: 
           name: " https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.1-x86_64.rpm"
           state: latest
