@@ -7,5 +7,5 @@
     - name: IAM user remove
       iam:
         iam_type: user
-        name: "{{ name }}"                    
+        name: "{{name}}"                    
         state: absent  
