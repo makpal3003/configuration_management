@@ -1,0 +1,11 @@
+---
+- name: IAM group add
+  hosts: localhost
+  vars_files:
+    - var_delete_group_add
+  tasks:
+    - name: IAM group add 
+      iam:
+        iam_type: group
+        name: "{{ name }}"                    
+        state: absent   

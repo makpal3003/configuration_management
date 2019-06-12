@@ -1,0 +1,11 @@
+---
+- name: IAM user remove
+  hosts: localhost
+  vars_files:
+    - var_delete_iam_user
+  tasks:
+    - name: IAM user remove
+      iam:
+        iam_type: user
+        name: "{{ name }}"                    
+        state: absent  
