@@ -1,0 +1,12 @@
+---
+- name: Creates VPC
+  hosts: localhost
+  vars_files:
+    - dev_vars
+  tasks:
+    - ec2_vpc_net:
+        name: "{{name}}"
+        state: present
+        cidr_block: "{{cidr_block}}"
+        resource_tags: { "Environment":"Development" }
+        region: "{{region}}"
