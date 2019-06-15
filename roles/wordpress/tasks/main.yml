@@ -26,8 +26,8 @@
 
 - name: Download wordpress Package
   get_url:
-        url: https://wordpress.org/latest.tar.gz
-        dest: /tmp/
+    url: https://wordpress.org/latest.tar.gz
+    dest: /tmp/
 
 - name: Unzip wordpres file
   unarchive:
