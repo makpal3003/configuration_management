@@ -3,17 +3,17 @@
 - name: Install necessary packages
   package:
     name: "{{item}}"
-    state: latest
+    state: present
     with_items:
-       - wget 
-       - unzip
-       - httpd  
-       - php
-       - php-gd
-       - mysql
-       - mariadb-server
-       - php-mysql
-       - php-fpm
+      - wget 
+      - unzip
+      - httpd  
+      - php
+      - php-gd
+      - mysql
+      - mariadb-server
+      - php-mysql
+      - php-fpm
     ignore_errors: true
 
   
@@ -46,7 +46,7 @@
 - name: Restart httpd
   systemd:
     name: httpd
-    state: restarted  
+    state: stopped 
     enabled: yes
     become: yes
     become_method: sudo
