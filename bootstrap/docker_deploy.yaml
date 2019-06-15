@@ -1,0 +1,12 @@
+---
+- name: Installs Docker on new instancce
+  hosts: localhost
+  tasks: 
+    - name: deploy instance
+      ec2: 
+        key_name: "{{key_name}}"
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        count: "{{count}}"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        region: "{{region}}" 
