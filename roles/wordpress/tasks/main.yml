@@ -4,17 +4,17 @@
   package:
     name: "{{item}}"
     state: present
-    with_items:
-      - wget 
-      - unzip
-      - httpd  
-      - php
-      - php-gd
-      - mysql
-      - mariadb-server
-      - php-mysql
-      - php-fpm
-    ignore_errors: true
+  with_items:
+    - wget 
+    - unzip
+    - httpd  
+    - php
+    - php-gd
+    - mysql
+    - mariadb-server
+    - php-mysql
+    - php-fpm
+  ignore_errors: true
 
   
 - name: Install epel-release
