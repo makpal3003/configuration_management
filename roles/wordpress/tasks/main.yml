@@ -48,5 +48,5 @@
     name: httpd
     state: stopped 
     enabled: yes
-    become: yes
-    become_method: sudo
+  become: yes
+  become_method: sudo
