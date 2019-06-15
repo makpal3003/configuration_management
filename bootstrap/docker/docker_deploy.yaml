@@ -1,6 +1,8 @@
 ---
 - name: Installs Docker on new instancce
   hosts: localhost
+  vars_files:
+    - docker_vars
   tasks: 
     - name: deploy instance
       ec2: 
