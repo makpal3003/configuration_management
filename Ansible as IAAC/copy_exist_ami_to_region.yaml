@@ -1,0 +1,10 @@
+---
+- name: Basic AMI Copy
+  hosts: localhost
+  become: yes
+  become_method: yes
+  tasks:
+      - ec2_ami_copy:
+        source_region: us-east-2
+        region: eu-west-1
+        source_image_id: "ami-0f2b4fc905b0bd1f1"
