@@ -10,3 +10,7 @@
         cidr_block: "{{cidr_block}}"
         resource_tags: { "Environment":"Development" }
         region: "{{region}}"
+       
+  #become: true
+  #become_user: root
+  
